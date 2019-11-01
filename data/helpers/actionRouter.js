@@ -6,7 +6,7 @@ const Actions = require('./actionModel.js');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    Actions.find(req.query)
+    Actions.get()
       .then(action => {
         res.status(200).json(action);
       })
@@ -18,6 +18,9 @@ router.get("/", (req, res) => {
         });
       });
   });
+
+
+
 
 
 module.exports = router;
