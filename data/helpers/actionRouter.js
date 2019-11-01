@@ -37,6 +37,19 @@ router.post("/", validateProjectId, validateActionPost, (req, res) => {
   res.send(newAction);
 });
 
+router.delete('/:id',validateProjectId , validateActionId, (req, res, next) => {
+    const { id } = req.params.id;
+    Actions.remove(id).then(() => {
+      res.status(200).json({message: "This Actions has been successfully deleted"});
+    }).catch(next);
+  });
+
+router.put('/:id', validateProjectId, validateActionId, (req, res, next) => {
+    const { title, description } = req.body;
+    Actions.update(req.action.id, { title, description }).then(updated => {
+      res.status(200).json({ ...req.action, title, description });
+    }).catch(next);
+  });
 
 
 //   middleware

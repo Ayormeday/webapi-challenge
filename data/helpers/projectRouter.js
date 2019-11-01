@@ -40,7 +40,7 @@ router.get('/', (req, res, next) => {
 router.delete('/:id',validateProjectId , (req, res, next) => {
     const { id } = req.params.id;
     Projects.remove(id).then(() => {
-      res.status(200).json({message: "This user has been successfully deleted"});
+      res.status(200).json({message: "This project has been successfully deleted"});
     }).catch(next);
   });
 
