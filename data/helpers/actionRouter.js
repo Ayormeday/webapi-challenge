@@ -97,4 +97,14 @@ function validateActionPost(req, res, next) {
   }
 }
 
+router.use((error, req, res) => {
+    res.status(500).json({
+      file: 'projectRouter',
+      method: req.method,
+      url: req.url,
+      message: error.message
+    });
+  });
+
+
 module.exports = router;
